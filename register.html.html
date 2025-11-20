@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barkah&Eats - Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+<header class="bg-white shadow-sm py-4 fixed top-0 left-0 w-full z-50">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <i class="fas fa-utensils text-green-600 text-2xl mr-2"></i>
+            <h1 class="text-xl font-bold text-gray-800">Barkah&Eats</h1>
+        </div>
+        <div class="flex space-x-4">
+            <a href="login.html" class="text-gray-600 hover:text-green-500 font-medium">Login</a>
+            <a href="register.html" class="text-green-500 font-medium border-b-2 border-green-500">Register</a>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center py-8 px-4">
+        <div class="form-container bg-white rounded-xl p-8 w-full max-w-md">
+            <div class="text-center mb-6">
+                <i class="fas fa-utensils text-green-500 text-4xl mb-3"></i>
+                <h2 class="text-2xl font-bold text-gray-800">Create Your Account</h2>
+                <p class="text-gray-600 mt-2">Join Barkah&Eats today</p>
+            </div>
+            
+            <form id="registrationForm" class="space-y-4">
+                <!-- Full Name -->
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <div class="relative">
+                        <input type="text" id="fullName" name="fullName" 
+                               class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                               placeholder="Enter your full name">
+                        <i class="fas fa-user absolute right-3 top-3 text-gray-400"></i>
+                    </div>
+                    <p id="fullNameError" class="error-message hidden">Please enter your full name</p>
+                </div>
+                
+                <!-- Email Address -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                    <div class="relative">
+                        <input type="email" id="email" name="email" 
+                               class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                               placeholder="Enter your email">
+                        <i class="fas fa-envelope absolute right-3 top-3 text-gray-400"></i>
+                    </div>
+                    <p id="emailError" class="error-message hidden">Please enter a valid email address</p>
+                </div>
+                
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <div class="relative">
+                        <input type="password" id="password" name="password" 
+                               class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                               placeholder="Create a password">
+                        <i class="fas fa-lock absolute right-3 top-3 text-gray-400"></i>
+                    </div>
+                    <p id="passwordError" class="error-message hidden">Password must be at least 6 characters</p>
+                </div>
+                
+                <!-- Confirm Password -->
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                    <div class="relative">
+                        <input type="password" id="confirmPassword" name="confirmPassword" 
+                               class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                               placeholder="Confirm your password">
+                        <i class="fas fa-lock absolute right-3 top-3 text-gray-400"></i>
+                    </div>
+                    <p id="confirmPasswordError" class="error-message hidden">Passwords do not match</p>
+                </div>
+                
+               <!-- Household Size -->
+<div>
+    <label for="householdSize" class="block text-sm font-medium text-gray-700 mb-1">
+        Household Size
+    </label>
+
+    <input 
+        type="text" 
+        id="householdSize" 
+        name="householdSize" 
+        list="householdSizeOptions"
+        class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+        placeholder="Enter or select household size"
+    >
+
+    <datalist id="householdSizeOptions">
+        <option value="1 person"></option>
+        <option value="2 people"></option>
+        <option value="3 people"></option>
+        <option value="4 people"></option>
+        <option value="5+ people"></option>
+    </datalist>
+</div>
+
+                
+                <!-- Dietary Preferences -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Dietary Preferences</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="dietaryPrefs" value="vegetarian" class="sr-only">
+                            <span class="checkmark"></span>
+                            <span class="ml-2 text-sm text-gray-700">Vegetarian</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="dietaryPrefs" value="vegan" class="sr-only">
+                            <span class="checkmark"></span>
+                            <span class="ml-2 text-sm text-gray-700">Vegan</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="dietaryPrefs" value="gluten-free" class="sr-only">
+                            <span class="checkmark"></span>
+                            <span class="ml-2 text-sm text-gray-700">Gluten-Free</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="dietaryPrefs" value="dairy-free" class="sr-only">
+                            <span class="checkmark"></span>
+                            <span class="ml-2 text-sm text-gray-700">Dairy-Free</span>
+                        </label>
+                    </div>
+                </div>
+                
+              <!-- Budget Range -->
+<div>
+    <label for="budgetRange" class="block text-sm font-medium text-gray-700 mb-1">
+        Weekly Budget Range
+    </label>
+
+    <input 
+        type="text" 
+        id="budgetRange" 
+        name="budgetRange" 
+        list="budgetRangeOptions"
+        class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg 
+               focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent 
+               transition-all duration-300"
+        placeholder="Enter or select weekly budget range"
+    >
+
+    <datalist id="budgetRangeOptions">
+        <option value="$50 - $100"></option>
+        <option value="$100 - $150"></option>
+        <option value="$150+"></option>
+    </datalist>
+</div>
+
+                <!-- Location -->
+                <div>
+                    <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                    <div class="relative">
+                        <input type="text" id="location" name="location" 
+                               class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                               placeholder="Enter your city">
+                        <i class="fas fa-map-marker-alt absolute right-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Terms and Conditions -->
+                <div class="flex items-start space-x-2">
+                    <input type="checkbox" id="terms" name="terms" class="mt-1 rounded text-green-500 focus:ring-green-500">
+                    <label for="terms" class="text-sm text-gray-700">
+                        I agree to the <a href="#" class="text-green-500 hover:underline">Terms and Conditions</a> and <a href="#" class="text-green-500 hover:underline">Privacy Policy</a>
+                    </label>
+                </div>
+                <p id="termsError" class="error-message hidden">You must agree to the terms and conditions</p>
+                
+                <!-- Submit Button -->
+                <button type="submit" 
+                        class="btn-primary w-full py-3 px-4 text-white font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-2 transition-all duration-300">
+                    Create Account
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">
+                    Already have an account? 
+                    <a href="login.html" class="text-green-500 font-medium hover:text-green-600 transition-colors duration-300">Login here</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-6 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="fas fa-utensils text-green-600 text-xl mr-2"></i>
+                    <span class="text-lg font-bold text-gray-800">Barkah&Eats</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-green-500 transition-colors duration-300">About</a>
+                    <a href="#" class="text-gray-600 hover:text-green-500 transition-colors duration-300">Contact</a>
+                    <a href="#" class="text-gray-600 hover:text-green-500 transition-colors duration-300">Privacy</a>
+                    <a href="#" class="text-gray-600 hover:text-green-500 transition-colors duration-300">Terms</a>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 text-sm mt-4">
+                <p>&copy; 2023 Barkah&Eats. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

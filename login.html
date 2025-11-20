@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barkah&Eats - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+    <!-- Fixed Header -->
+    <header class="bg-white shadow-sm py-4 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-utensils text-green-600 text-2xl mr-2"></i>
+                <h1 class="text-xl font-bold text-gray-800">Barkah&Eats</h1>
+            </div>
+            <div class="flex space-x-4">
+                <a href="login.html" class="text-green-500 font-medium border-b-2 border-green-500">Login</a>
+                <a href="register.html" class="text-gray-600 hover:text-green-500 font-medium">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center min-h-screen pt-16 pb-8 px-4">
+        <div class="login-container bg-white rounded-2xl p-8 w-full max-w-md">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-sign-in-alt text-green-600 text-2xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-800">Welcome Back</h2>
+                <p class="text-gray-600 mt-2">Sign in to your Barkah&Eats account</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-6">
+                <!-- Email Address -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative">
+                        <input type="email" id="email" name="email" 
+                               class="login-input w-full px-4 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                               placeholder="Enter your email address"
+                               autocomplete="email">
+                        <i class="fas fa-envelope absolute right-4 top-4 text-gray-400"></i>
+                    </div>
+                    <p id="emailError" class="error-message hidden mt-2">
+                        <i class="fas fa-exclamation-circle mr-1"></i>
+                        <span>Please enter a valid email address</span>
+                    </p>
+                </div>
+                
+                <!-- Password -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="password" class="block text-sm font-medium text-gray-700">
+                            Password <span class="text-red-500">*</span>
+                        </label>
+                        <a href="forgot-password.html" class="text-sm text-green-600 hover:text-green-700 font-medium transition-colors">
+                            Forgot Password?
+                        </a>
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="password" name="password" 
+                               class="login-input w-full px-4 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                               placeholder="Enter your password"
+                               autocomplete="current-password">
+                        <i class="fas fa-lock absolute right-4 top-4 text-gray-400"></i>
+                        <button type="button" id="togglePassword" class="absolute right-10 top-4 text-gray-400 hover:text-gray-600 transition-colors">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <p id="passwordError" class="error-message hidden mt-2">
+                        <i class="fas fa-exclamation-circle mr-1"></i>
+                        <span>Password must be at least 6 characters</span>
+                    </p>
+                </div>
+                
+                <!-- Remember Me -->
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="rememberMe" name="rememberMe" 
+                               class="rounded text-green-500 focus:ring-green-500 border-gray-300">
+                        <span class="ml-2 text-sm text-gray-700">Remember me</span>
+                    </label>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" 
+                        class="login-btn w-full py-4 px-6 text-white font-semibold rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 transform hover:scale-[1.02]">
+                    <span class="flex items-center justify-center">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        Sign In
+                    </span>
+                </button>
+                
+                <!-- Divider -->
+                <div class="relative flex items-center justify-center my-6">
+                    <div class="border-t border-gray-300 flex-grow"></div>
+                    <span class="mx-4 text-sm text-gray-500 bg-white px-2">Or continue with</span>
+                    <div class="border-t border-gray-300 flex-grow"></div>
+                </div>
+                
+                <!-- Social Login -->
+                <div class="grid grid-cols-2 gap-4">
+                    <button type="button" 
+                            class="social-btn google-btn flex items-center justify-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300">
+                        <i class="fab fa-google text-red-500 mr-2"></i>
+                        <span class="text-sm font-medium">Google</span>
+                    </button>
+                    <button type="button" 
+                            class="social-btn facebook-btn flex items-center justify-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300">
+                        <i class="fab fa-facebook text-blue-600 mr-2"></i>
+                        <span class="text-sm font-medium">Facebook</span>
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Sign Up Link -->
+            <div class="text-center mt-8 pt-6 border-t border-gray-200">
+                <p class="text-gray-600">
+                    Don't have an account? 
+                    <a href="register.html" class="signup-link text-green-600 font-semibold hover:text-green-700 transition-colors duration-300">
+                        Create account
+                    </a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="fas fa-utensils text-green-600 text-xl mr-2"></i>
+                    <span class="text-lg font-bold text-gray-800">Barkah&Eats</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-green-500 transition-colors duration-300">About</a>
+                    <a href="#" class="text-gray-600 hover:text-green-500 transition-colors duration-300">Contact</a>
+                    <a href="#" class="text-gray-600 hover:text-green-500 transition-colors duration-300">Privacy</a>
+                    <a href="#" class="text-gray-600 hover:text-green-500 transition-colors duration-300">Terms</a>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 text-sm mt-4">
+                <p>&copy; 2023 Barkah&Eats. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

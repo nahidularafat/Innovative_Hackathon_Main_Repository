@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barkah&Eats - Smart Food Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm py-4 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-utensils text-green-600 text-2xl mr-2"></i>
+                <h1 class="text-xl font-bold text-gray-800">Barkah&Eats</h1>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#features" class="text-gray-600 hover:text-green-500 font-medium hidden md:block">Features</a>
+                <a href="#how-it-works" class="text-gray-600 hover:text-green-500 font-medium hidden md:block">How It Works</a>
+                <a href="#benefits" class="text-gray-600 hover:text-green-500 font-medium hidden md:block">Benefits</a>
+                <a href="login.html" class="text-gray-600 hover:text-green-500 font-medium">Login</a>
+                <a href="register.html" class="px-4 py-2 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 px-4 bg-gradient-to-br from-green-50 to-blue-50">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="text-center lg:text-left">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+                        Smart Food Management
+                        <span class="text-green-500">Made Simple</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Reduce food waste, save money, and eat healthier with Barkah&Eats. 
+                        Track your inventory, log consumption, and get personalized recommendations 
+                        for sustainable eating.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="register.html" class="px-8 py-4 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Start Free Today
+                        </a>
+                        <a href="#how-it-works" class="px-8 py-4 border border-green-500 text-green-500 rounded-xl font-semibold hover:bg-green-500 hover:text-white transition-all duration-300">
+                            <i class="fas fa-play-circle mr-2"></i>
+                            See How It Works
+                        </a>
+                    </div>
+                    <div class="mt-8 flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>No credit card required</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Free forever</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Hero Image -->
+                <div class="relative">
+                    <div class="relative z-10 bg-white rounded-2xl p-6 shadow-2xl">
+                        <div class="bg-gray-800 rounded-lg p-1">
+                            <!-- Mock Dashboard Preview -->
+                            <div class="bg-gray-900 rounded-t-lg p-4 flex items-center space-x-2">
+                                <div class="flex space-x-1">
+                                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                </div>
+                                <div class="flex-1 text-center">
+                                    <span class="text-white text-sm font-medium">Barkah&Eats Dashboard</span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded-b-lg">
+                                <div class="grid grid-cols-2 gap-4 mb-4">
+                                    <div class="bg-green-500 rounded-lg p-3 text-center">
+                                        <div class="text-white text-lg font-bold">24</div>
+                                        <div class="text-green-100 text-xs">Items in Stock</div>
+                                    </div>
+                                    <div class="bg-blue-500 rounded-lg p-3 text-center">
+                                        <div class="text-white text-lg font-bold">12</div>
+                                        <div class="text-blue-100 text-xs">Used This Week</div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-700 rounded-lg p-3">
+                                    <div class="text-white text-sm font-medium mb-2">Recent Consumption</div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-gray-300 text-xs">
+                                            <span>🍎 Apple</span>
+                                            <span>2 pieces</span>
+                                        </div>
+                                        <div class="flex justify-between text-gray-300 text-xs">
+                                            <span>🥛 Milk</span>
+                                            <span>1 liter</span>
+                                        </div>
+                                        <div class="flex justify-between text-gray-300 text-xs">
+                                            <span>🥕 Carrot</span>
+                                            <span>500g</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-yellow-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-chart-line text-yellow-600 text-2xl"></i>
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-leaf text-purple-600 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600 mb-2">30%</div>
+                    <div class="text-gray-600">Average Reduction in Food Waste</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">$600</div>
+                    <div class="text-gray-600">Yearly Savings per Household</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-600 mb-2">85%</div>
+                    <div class="text-gray-600">Users Eat Healthier</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-orange-600 mb-2">24/7</div>
+                    <div class="text-gray-600">Smart Tracking</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Everything You Need to Manage Your Food
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Powerful features designed to make food management effortless and effective
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-boxes text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Smart Inventory Tracking</h3>
+                    <p class="text-gray-600 mb-4">
+                        Keep track of all your food items with expiration alerts and smart categorization.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Expiration date tracking
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Category organization
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Quantity management
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-utensils text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Consumption Logging</h3>
+                    <p class="text-gray-600 mb-4">
+                        Easily log what you eat and track your consumption patterns over time.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Quick entry system
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Category analysis
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Historical data
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-camera text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Image Upload & Scanning</h3>
+                    <p class="text-gray-600 mb-4">
+                        Upload receipts and food labels for easy tracking and future AI processing.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Receipt scanning ready
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Food label capture
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Manual association
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-pie text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Smart Analytics</h3>
+                    <p class="text-gray-600 mb-4">
+                        Get insights into your consumption habits and receive personalized recommendations.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Waste reduction tips
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Budget optimization
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Health recommendations
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Responsive Design</h3>
+                    <p class="text-gray-600 mb-4">
+                        Access your food management system from any device, anywhere, anytime.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Mobile optimized
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Tablet friendly
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Desktop experience
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-seedling text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Sustainable Resources</h3>
+                    <p class="text-gray-600 mb-4">
+                        Access curated resources for sustainable eating and waste reduction.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Storage tips
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Recipe ideas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Nutrition guides
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    How Barkah&Eats Works
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Simple steps to transform your food management experience
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 bg-green-500 rounded-2xl flex items-center justify-center mx-auto text-white text-2xl font-bold">
+                            1
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Sign Up & Set Profile</h3>
+                    <p class="text-gray-600">
+                        Create your account and set your dietary preferences, household size, and budget.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto text-white text-2xl font-bold">
+                            2
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Add Your Inventory</h3>
+                    <p class="text-gray-600">
+                        Input your food items or upload receipts to build your digital pantry.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto text-white text-2xl font-bold">
+                            3
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Log Consumption</h3>
+                    <p class="text-gray-600">
+                        Track what you eat and watch your consumption patterns emerge.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="text-center">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto text-white text-2xl font-bold">
+                            4
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Get Smart Insights</h3>
+                    <p class="text-gray-600">
+                        Receive personalized recommendations to reduce waste and eat healthier.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-green-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Why Choose Barkah&Eats?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Join thousands of users who have transformed their relationship with food
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-green-200">
+                    <i class="fas fa-money-bill-wave text-green-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Save Money</h3>
+                    <p class="text-gray-600">
+                        Reduce food waste and make smarter purchasing decisions. Average users save $600+ per year.
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-green-200">
+                    <i class="fas fa-heart text-red-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Eat Healthier</h3>
+                    <p class="text-gray-600">
+                        Track your nutrition intake and get recommendations for balanced eating habits.
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-green-200">
+                    <i class="fas fa-globe-americas text-blue-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Help the Planet</h3>
+                    <p class="text-gray-600">
+                        Reduce your carbon footprint by minimizing food waste and supporting sustainable practices.
+                    </p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-green-200">
+                    <i class="fas fa-clock text-purple-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Save Time</h3>
+                    <p class="text-gray-600">
+                        Automated tracking and smart alerts save you hours on meal planning and inventory management.
+                    </p>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-green-200">
+                    <i class="fas fa-chart-line text-orange-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Gain Insights</h3>
+                    <p class="text-gray-600">
+                        Understand your consumption patterns and make data-driven decisions about your food.
+                    </p>
+                </div>
+
+                <!-- Benefit 6 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-green-200">
+                    <i class="fas fa-mobile-alt text-indigo-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Anywhere Access</h3>
+                    <p class="text-gray-600">
+                        Manage your food from any device, whether at home or at the grocery store.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-green-500 to-blue-500 text-white">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Ready to Transform Your Food Management?
+            </h2>
+            <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+                Join Barkah&Eats today and start your journey towards sustainable, efficient, and healthy food management.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="register.html" class="px-8 py-4 bg-white text-green-600 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Sign Up Free
+                </a>
+                <a href="login.html" class="px-8 py-4 border border-white text-white rounded-xl font-semibold hover:bg-white hover:text-green-600 transition-all duration-300">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Login
+                </a>
+            </div>
+            <p class="text-sm opacity-80 mt-6">
+                No credit card required • Free forever • Setup in 2 minutes
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-utensils text-green-400 text-2xl mr-2"></i>
+                        <h3 class="text-xl font-bold">Barkah&Eats</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Smart food management platform helping individuals and families reduce waste, save money, and eat healthier through intelligent tracking and personalized recommendations.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Platform</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="dashboard.html" class="hover:text-white transition-colors">Dashboard</a></li>
+                        <li><a href="inventory.html" class="hover:text-white transition-colors">Inventory</a></li>
+                        <li><a href="upload.html" class="hover:text-white transition-colors">Image Upload</a></li>
+                        <li><a href="resources.html" class="hover:text-white transition-colors">Resources</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Barkah&Eats. All rights reserved. Built for INNOVATEX Hackathon.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/home.js"></script>
+</body>
+</html>

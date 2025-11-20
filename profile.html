@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barkah&Eats - My Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Fixed Header -->
+    <header class="bg-white shadow-sm py-4 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-utensils text-green-600 text-2xl mr-2"></i>
+                <h1 class="text-xl font-bold text-gray-800">Barkah&Eats</h1>
+            </div>
+            <nav class="flex items-center space-x-6">
+                <a href="dashboard.html" class="text-gray-600 hover:text-green-500 font-medium">Dashboard</a>
+                <a href="profile.html" class="text-green-500 font-medium border-b-2 border-green-500">Profile</a>
+                <a href="index.html" class="text-gray-600 hover:text-green-500 font-medium">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-8 px-4 container mx-auto">
+        <div class="max-w-6xl mx-auto">
+            <!-- Page Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">My Profile</h1>
+                <p class="text-gray-600">Manage your preferences, log consumption, and track inventory</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column - Profile & Preferences -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Profile Card -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-user text-green-600 text-2xl"></i>
+                            </div>
+                            <h2 class="text-xl font-semibold text-gray-800" id="userName">John Doe</h2>
+                            <p class="text-gray-500 text-sm" id="userEmail">john@example.com</p>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="text-center p-3 bg-blue-50 rounded-lg">
+                                <div class="text-blue-600 font-bold text-lg" id="totalItems">12</div>
+                                <div class="text-blue-500 text-xs">Items in Stock</div>
+                            </div>
+                            <div class="text-center p-3 bg-green-50 rounded-lg">
+                                <div class="text-green-600 font-bold text-lg" id="consumedToday">3</div>
+                                <div class="text-green-500 text-xs">Used Today</div>
+                            </div>
+                        </div>
+
+                        <button id="editProfileBtn" class="w-full py-2 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                            <i class="fas fa-edit mr-2"></i>Edit Profile
+                        </button>
+                    </div>
+
+                    <!-- Dietary Preferences -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-seedling text-green-500 mr-2"></i>
+                            Dietary Preferences
+                        </h3>
+                        <div id="dietaryPrefsList" class="space-y-2">
+                            <!-- Dynamically populated -->
+                        </div>
+                        <button id="editDietaryBtn" class="w-full mt-4 py-2 border border-green-500 text-green-600 rounded-lg font-medium hover:bg-green-50 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Update Preferences
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column - Main Content -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Quick Actions -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <button id="logConsumptionBtn" class="quick-action-btn bg-green-500 hover:bg-green-600">
+                            <i class="fas fa-utensils text-white text-xl mb-2"></i>
+                            <span class="text-white font-medium">Log Consumption</span>
+                        </button>
+                        <button id="addInventoryBtn" class="quick-action-btn bg-blue-500 hover:bg-blue-600">
+                            <i class="fas fa-plus-circle text-white text-xl mb-2"></i>
+                            <span class="text-white font-medium">Add to Inventory</span>
+                        </button>
+                        <button id="viewHistoryBtn" class="quick-action-btn bg-purple-500 hover:bg-purple-600">
+                            <i class="fas fa-history text-white text-xl mb-2"></i>
+                            <span class="text-white font-medium">View History</span>
+                        </button>
+                    </div>
+
+                    <!-- Consumption Logging Section -->
+                    <div id="consumptionSection" class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-utensils text-green-500 mr-2"></i>
+                            Log Food Consumption
+                        </h3>
+                        <form id="consumptionForm" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Food Item</label>
+                                    <input type="text" id="foodItem" 
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                           placeholder="Enter food item name" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+                                    <input type="number" id="foodQuantity" 
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                           placeholder="e.g., 2" min="0.1" step="0.1" required>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                                    <select id="foodCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                        <option value="vegetable">Vegetable</option>
+                                        <option value="fruit">Fruit</option>
+                                        <option value="dairy">Dairy</option>
+                                        <option value="meat">Meat</option>
+                                        <option value="grains">Grains</option>
+                                        <option value="beverages">Beverages</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Date & Time</label>
+                                    <input type="datetime-local" id="consumptionDate" 
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                           required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Notes (Optional)</label>
+                                <textarea id="consumptionNotes" 
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                          placeholder="Any additional notes..."
+                                          rows="2"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                                <i class="fas fa-save mr-2"></i>Log Consumption
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Inventory Management Section -->
+                    <div id="inventorySection" class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800 flex items-center">
+                                <i class="fas fa-boxes text-blue-500 mr-2"></i>
+                                My Inventory
+                            </h3>
+                            <button id="addItemBtn" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
+                                <i class="fas fa-plus mr-1"></i>Add Item
+                            </button>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Added</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventoryTableBody" class="bg-white divide-y divide-gray-200">
+                                    <!-- Dynamically populated -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Consumption History Section -->
+                    <div id="historySection" class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-history text-purple-500 mr-2"></i>
+                            Recent Consumption History
+                        </h3>
+                        <div id="consumptionHistory" class="space-y-3">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Edit Profile</h3>
+            <form id="profileForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="editUserName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="editUserEmail" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Weekly Budget ($)</label>
+                    <input type="number" id="editUserBudget" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" min="0">
+                </div>
+                <div class="flex space-x-3 pt-4">
+                    <button type="button" id="cancelProfileEdit" class="flex-1 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors">Cancel</button>
+                    <button type="submit" class="flex-1 py-2 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Inventory Item Modal -->
+    <div id="addInventoryModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Add Inventory Item</h3>
+            <form id="inventoryForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Item Name</label>
+                    <input type="text" id="inventoryItemName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                        <select id="inventoryCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="vegetable">Vegetable</option>
+                            <option value="fruit">Fruit</option>
+                            <option value="dairy">Dairy</option>
+                            <option value="meat">Meat</option>
+                            <option value="grains">Grains</option>
+                            <option value="beverages">Beverages</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+                        <input type="number" id="inventoryQuantity" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" min="0.1" step="0.1" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Unit</label>
+                    <select id="inventoryUnit" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <option value="pieces">Pieces</option>
+                        <option value="kg">Kilograms</option>
+                        <option value="g">Grams</option>
+                        <option value="liters">Liters</option>
+                        <option value="ml">Milliliters</option>
+                        <option value="pack">Pack</option>
+                    </select>
+                </div>
+                <div class="flex space-x-3 pt-4">
+                    <button type="button" id="cancelInventory" class="flex-1 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors">Cancel</button>
+                    <button type="submit" class="flex-1 py-2 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors">Add Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dietary Preferences Modal -->
+    <div id="dietaryModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Dietary Preferences</h3>
+            <form id="dietaryForm" class="space-y-4">
+                <div class="space-y-3">
+                    <label class="flex items-center">
+                        <input type="checkbox" name="dietary" value="vegetarian" class="rounded text-green-500 focus:ring-green-500">
+                        <span class="ml-2 text-gray-700">Vegetarian</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" name="dietary" value="vegan" class="rounded text-green-500 focus:ring-green-500">
+                        <span class="ml-2 text-gray-700">Vegan</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" name="dietary" value="gluten-free" class="rounded text-green-500 focus:ring-green-500">
+                        <span class="ml-2 text-gray-700">Gluten-Free</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" name="dietary" value="dairy-free" class="rounded text-green-500 focus:ring-green-500">
+                        <span class="ml-2 text-gray-700">Dairy-Free</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" name="dietary" value="halal" class="rounded text-green-500 focus:ring-green-500">
+                        <span class="ml-2 text-gray-700">Halal</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" name="dietary" value="kosher" class="rounded text-green-500 focus:ring-green-500">
+                        <span class="ml-2 text-gray-700">Kosher</span>
+                    </label>
+                </div>
+                <div class="flex space-x-3 pt-4">
+                    <button type="button" id="cancelDietary" class="flex-1 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors">Cancel</button>
+                    <button type="submit" class="flex-1 py-2 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors">Save Preferences</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

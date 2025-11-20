@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barkah&Eats - Food Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/inventory.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Fixed Header -->
+    <header class="bg-white shadow-sm py-4 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-utensils text-green-600 text-2xl mr-2"></i>
+                <h1 class="text-xl font-bold text-gray-800">Barkah&Eats</h1>
+            </div>
+            <nav class="flex items-center space-x-6">
+                <a href="dashboard.html" class="text-gray-600 hover:text-green-500 font-medium">Dashboard</a>
+                <a href="inventory.html" class="text-green-500 font-medium border-b-2 border-green-500">Inventory</a>
+                <a href="profile.html" class="text-gray-600 hover:text-green-500 font-medium">Profile</a>
+                <a href="index.html" class="text-gray-600 hover:text-green-500 font-medium">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-8 px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto">
+            <!-- Page Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Food Inventory</h1>
+                <p class="text-gray-600">Manage your food items, track expiration, and reduce waste</p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="stat-card bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Total Items</p>
+                            <p class="text-2xl font-bold text-gray-800" id="totalItemsCount">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-boxes text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Expiring Soon</p>
+                            <p class="text-2xl font-bold text-orange-600" id="expiringSoonCount">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-clock text-orange-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Categories</p>
+                            <p class="text-2xl font-bold text-green-600" id="categoriesCount">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-tags text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Total Value</p>
+                            <p class="text-2xl font-bold text-purple-600" id="totalValue">$0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-dollar-sign text-purple-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters and Actions -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 flex-1">
+                        <!-- Search -->
+                        <div class="flex-1">
+                            <div class="relative">
+                                <input type="text" id="searchInventory" 
+                                       class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                       placeholder="Search food items...">
+                                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Category Filter -->
+                        <div class="sm:w-48">
+                            <select id="categoryFilter" 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="all">All Categories</option>
+                                <option value="fruit">Fruits</option>
+                                <option value="vegetable">Vegetables</option>
+                                <option value="dairy">Dairy</option>
+                                <option value="meat">Meat & Poultry</option>
+                                <option value="grains">Grains</option>
+                                <option value="beverages">Beverages</option>
+                                <option value="snacks">Snacks</option>
+                                <option value="condiments">Condiments</option>
+                            </select>
+                        </div>
+
+                        <!-- Expiration Filter -->
+                        <div class="sm:w-48">
+                            <select id="expirationFilter" 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="all">All Items</option>
+                                <option value="expiring">Expiring Soon (≤3 days)</option>
+                                <option value="fresh">Fresh (>7 days)</option>
+                                <option value="expired">Expired</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Add Item Button -->
+                    <button id="addNewItemBtn" 
+                            class="px-6 py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors flex items-center">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add New Item
+                    </button>
+                </div>
+            </div>
+
+            <!-- Inventory Table -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-gray-50 border-b border-gray-200">
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Food Item</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Category</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Expires In</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Cost</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTableBody" class="divide-y divide-gray-200">
+                            <!-- Dynamic content will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="hidden p-12 text-center">
+                    <i class="fas fa-box-open text-4xl text-gray-300 mb-4"></i>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">No food items found</h3>
+                    <p class="text-gray-500 mb-4">Get started by adding your first food item to the inventory.</p>
+                    <button id="addFirstItemBtn" class="px-6 py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add Your First Item
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Summary -->
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="category-summary bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-apple-alt text-green-500 mr-2"></i>
+                        Fruits & Vegetables
+                    </h3>
+                    <div class="text-2xl font-bold text-green-600" id="produceCount">0 items</div>
+                    <div class="text-sm text-gray-500 mt-1">Short shelf life</div>
+                </div>
+                <div class="category-summary bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-cheese text-yellow-500 mr-2"></i>
+                        Dairy Products
+                    </h3>
+                    <div class="text-2xl font-bold text-yellow-600" id="dairyCount">0 items</div>
+                    <div class="text-sm text-gray-500 mt-1">Check expiration dates</div>
+                </div>
+                <div class="category-summary bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-drumstick-bite text-red-500 mr-2"></i>
+                        Meat & Poultry
+                    </h3>
+                    <div class="text-2xl font-bold text-red-600" id="meatCount">0 items</div>
+                    <div class="text-sm text-gray-500 mt-1">Freeze for longer storage</div>
+                </div>
+                <div class="category-summary bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-wheat-alt text-amber-500 mr-2"></i>
+                        Grains & Pantry
+                    </h3>
+                    <div class="text-2xl font-bold text-amber-600" id="grainsCount">0 items</div>
+                    <div class="text-sm text-gray-500 mt-1">Long shelf life</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Item Modal -->
+    <div id="addItemModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Add Food Item</h3>
+            <form id="addItemForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Item Name *</label>
+                    <input type="text" id="itemName" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                           placeholder="e.g., Apple, Milk, Bread" required>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+                        <select id="itemCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                            <option value="">Select Category</option>
+                            <option value="fruit">Fruit</option>
+                            <option value="vegetable">Vegetable</option>
+                            <option value="dairy">Dairy</option>
+                            <option value="meat">Meat & Poultry</option>
+                            <option value="grains">Grains</option>
+                            <option value="beverages">Beverages</option>
+                            <option value="snacks">Snacks</option>
+                            <option value="condiments">Condiments</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Expires In (days) *</label>
+                        <input type="number" id="itemExpiration" 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                               placeholder="e.g., 7" min="1" required>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Cost per Unit ($) *</label>
+                        <input type="number" id="itemCost" step="0.01"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                               placeholder="0.00" min="0" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+                        <input type="number" id="itemQuantity" 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                               placeholder="1" min="1" value="1">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Unit Type</label>
+                    <select id="itemUnit" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <option value="pieces">Pieces</option>
+                        <option value="kg">Kilograms</option>
+                        <option value="g">Grams</option>
+                        <option value="liters">Liters</option>
+                        <option value="ml">Milliliters</option>
+                        <option value="pack">Pack</option>
+                        <option value="bunch">Bunch</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Storage Notes (Optional)</label>
+                    <textarea id="itemNotes" 
+                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                              placeholder="Any special storage instructions..."
+                              rows="2"></textarea>
+                </div>
+
+                <div class="flex space-x-3 pt-4">
+                    <button type="button" id="cancelAddItem" 
+                            class="flex-1 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" 
+                            class="flex-1 py-2 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors">
+                        Add Item
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Item Details Modal -->
+    <div id="itemDetailsModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <div id="itemDetailsContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+            <div class="flex space-x-3 pt-4 mt-6 border-t border-gray-200">
+                <button type="button" id="closeItemDetails" 
+                        class="flex-1 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                    Close
+                </button>
+                <button type="button" id="useItemBtn" 
+                        class="flex-1 py-2 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors">
+                    Use Item
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/inventory.js"></script>
+</body>
+</html>

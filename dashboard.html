@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barkah&Eats - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Fixed Header -->
+    <header class="bg-white shadow-sm py-4 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-utensils text-green-600 text-2xl mr-2"></i>
+                <h1 class="text-xl font-bold text-gray-800">Barkah&Eats</h1>
+            </div>
+            <nav class="flex items-center space-x-6">
+                <a href="dashboard.html" class="text-green-500 font-medium border-b-2 border-green-500">Dashboard</a>
+                <a href="inventory.html" class="text-gray-600 hover:text-green-500 font-medium">Inventory</a>
+                <a href="resources.html" class="text-gray-600 hover:text-green-500 font-medium">Resources</a>
+                <a href="profile.html" class="text-gray-600 hover:text-green-500 font-medium">Profile</a>
+                <a href="index.html" class="text-gray-600 hover:text-green-500 font-medium">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-8 px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto">
+            <!-- Welcome Section -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Welcome back, <span id="userName">User</span>! 👋</h1>
+                <p class="text-gray-600">Here's your food management overview and personalized recommendations</p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="stat-card bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Inventory Items</p>
+                            <p class="text-2xl font-bold text-blue-600" id="inventoryCount">0</p>
+                            <p class="text-xs text-gray-500 mt-1" id="inventoryTrend"></p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-boxes text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">This Week's Consumption</p>
+                            <p class="text-2xl font-bold text-green-600" id="weeklyConsumption">0</p>
+                            <p class="text-xs text-gray-500 mt-1" id="consumptionTrend"></p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-utensils text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Items Expiring Soon</p>
+                            <p class="text-2xl font-bold text-orange-600" id="expiringCount">0</p>
+                            <p class="text-xs text-gray-500 mt-1">Within 3 days</p>
+                        </div>
+                        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-clock text-orange-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Money Saved</p>
+                            <p class="text-2xl font-bold text-purple-600" id="moneySaved">$0</p>
+                            <p class="text-xs text-gray-500 mt-1">From reduced waste</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-piggy-bank text-purple-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column - Recent Activity & Quick Actions -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Recent Consumption -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+                                <i class="fas fa-history text-green-500 mr-2"></i>
+                                Recent Consumption
+                            </h2>
+                            <a href="profile.html#consumption" class="text-green-600 hover:text-green-700 text-sm font-medium">
+                                View All →
+                            </a>
+                        </div>
+                        <div id="recentConsumption" class="space-y-3">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+
+                    <!-- Category Breakdown -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+                            <i class="fas fa-chart-pie text-blue-500 mr-2"></i>
+                            Consumption by Category
+                        </h2>
+                        <div id="categoryBreakdown" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+                            <i class="fas fa-bolt text-yellow-500 mr-2"></i>
+                            Quick Actions
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <a href="profile.html#consumption" class="quick-action-card bg-green-50 border border-green-200">
+                                <i class="fas fa-utensils text-green-600 text-2xl mb-3"></i>
+                                <span class="font-semibold text-green-800">Log Consumption</span>
+                                <span class="text-green-600 text-sm">Record food usage</span>
+                            </a>
+                            <a href="inventory.html" class="quick-action-card bg-blue-50 border border-blue-200">
+                                <i class="fas fa-plus-circle text-blue-600 text-2xl mb-3"></i>
+                                <span class="font-semibold text-blue-800">Add to Inventory</span>
+                                <span class="text-blue-600 text-sm">Manage food items</span>
+                            </a>
+                            <a href="inventory.html" class="quick-action-card bg-orange-50 border border-orange-200">
+                                <i class="fas fa-clock text-orange-600 text-2xl mb-3"></i>
+                                <span class="font-semibold text-orange-800">Check Expiring Items</span>
+                                <span class="text-orange-600 text-sm">Prevent food waste</span>
+                            </a>
+                            <a href="resources.html" class="quick-action-card bg-purple-50 border border-purple-200">
+                                <i class="fas fa-lightbulb text-purple-600 text-2xl mb-3"></i>
+                                <span class="font-semibold text-purple-800">Learn Tips</span>
+                                <span class="text-purple-600 text-sm">Sustainable practices</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Recommendations -->
+                <div class="space-y-6">
+                    <!-- Personalized Recommendations -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+                            <i class="fas fa-magic text-purple-500 mr-2"></i>
+                            Recommended for You
+                        </h2>
+                        <div id="personalizedRecommendations" class="space-y-4">
+                            <!-- Dynamic recommendations -->
+                        </div>
+                    </div>
+
+                    <!-- Waste Reduction Tips -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+                            <i class="fas fa-recycle text-green-500 mr-2"></i>
+                            Waste Reduction Tips
+                        </h2>
+                        <div id="wasteReductionTips" class="space-y-3">
+                            <!-- Dynamic tips -->
+                        </div>
+                    </div>
+
+                    <!-- Expiring Soon Alert -->
+                    <div id="expiringAlert" class="hidden bg-orange-50 border border-orange-200 rounded-xl p-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-orange-500 text-xl mr-3 mt-1"></i>
+                            <div>
+                                <h3 class="font-semibold text-orange-800 mb-2">Items Expiring Soon</h3>
+                                <p class="text-orange-700 text-sm mb-3">You have <span id="expiringItemsCount">0</span> items that will expire in the next 3 days.</p>
+                                <a href="inventory.html?filter=expiring" class="inline-flex items-center text-orange-600 hover:text-orange-700 font-medium text-sm">
+                                    Review Now →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

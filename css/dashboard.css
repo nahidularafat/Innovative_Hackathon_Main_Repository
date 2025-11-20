@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Stat Cards */
+.stat-card {
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Quick Action Cards */
+.quick-action-card {
+    @apply flex flex-col items-center justify-center p-6 rounded-xl transition-all duration-300 text-center;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Recommendation Cards */
+.recommendation-card {
+    @apply p-4 rounded-lg border transition-all duration-300;
+}
+
+.recommendation-card:hover {
+    transform: translateX(4px);
+}
+
+.recommendation-reason {
+    @apply text-xs px-2 py-1 rounded-full font-medium;
+}
+
+/* Consumption Items */
+.consumption-item {
+    @apply flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-4 transition-colors duration-200;
+}
+
+.consumption-item:hover {
+    @apply bg-gray-100;
+}
+
+/* Category Badges */
+.category-badge {
+    @
